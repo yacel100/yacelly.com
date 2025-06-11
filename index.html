@@ -4,264 +4,794 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Josee Luis Yacelly">
-    <meta name="description" content="Pagina personal de yacel100">
-    <title>Landing Page</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="icons/icomoon.css">
-    <link rel="stylesheet" href="css/estilos.css">
-
+    <meta name="description" content="Yacelly Solutions - Soluciones tecnológicas integrales en DevOps, Desarrollo Cloud y Transformación Digital">
+    <meta name="keywords" content="corporación tecnológica, DevOps enterprise, cloud solutions, digital transformation">
+    <title>Yacelly Solutions | Innovación Tecnológica Empresarial</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0052cc;
+            --primary-dark: #0747a6;
+            --secondary: #ff5630;
+            --dark: #172b4d;
+            --light: #f4f5f7;
+            --gray: #5e6c84;
+            --success: #36b37e;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            padding: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: white !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('img/hero-bg-pattern.png') no-repeat;
+            background-size: cover;
+            opacity: 0.1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #de350b;
+            border-color: #de350b;
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            height: 100%;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-section {
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .stats-container {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: -100px;
+            box-shadow: 0 10px 40px rgba(0, 82, 204, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .stat-title {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .client-logo {
+            height: 50px;
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            opacity: 1;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            position: relative;
+            font-style: italic;
+            padding: 0 0 20px 20px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        .contact-form .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .contact-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section::before {
+                width: 100%;
+                opacity: 0.05;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- Contenedor Header -->
-    <header id="linkHome">
-        <nav id="navFixed" class="navbar fixed-top navbar-expand-lg navbar-light bg-light p-10px">
-            <a class="navbar-brand" href="#linkHome">Yacel100<small>.</small></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo yacelly sf-soloLetras.png" alt="Yacelly Solutions" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link scroll current" href="#linkHome">Inicio</a>
+                        <a class="nav-link active" href="#home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll" href="#linkFeatures">Caracteristicas</a>
+                        <a class="nav-link" href="#services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll" href="#linkAbout">Nosotros</a>
+                        <a class="nav-link" href="#solutions">Soluciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll" href="#linkTestimonial">Testimonios</a>
+                        <a class="nav-link" href="#about">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll" href="#linkContacto">Contacto</a>
+                        <a class="nav-link" href="#clients">Clientes</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary" href="#contact">Cotizar Proyecto</a>
+                    </li>
                 </ul>
             </div>
-        </nav>
-
-        <div class="boxLogo">
-            <h1>Yacel100<small>.</small></h1>
         </div>
+    </nav>
 
-        <div class="boxHeader">
-            <div class="textosHeader">
-                <h1><b>...Grow Your Business Faster</b></h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur cupiditate voluptate repellendus voluptas esse culpa iusto.</p>
-
-                <a class="botonGetStarted" href="#" rel="nofollow noopener">Get Started</a>
-
-            </div>
-
-            <div class="imgHeader">
-                <img src="images/landing_1.png" alt="">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h1 class="hero-title">Transformación Digital para Empresas Globales</h1>
+                    <p class="hero-subtitle">Soluciones tecnológicas de clase mundial que impulsan la innovación y el crecimiento empresarial</p>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-light">Contactar Expertos</a>
+                        <a href="#solutions" class="btn btn-outline-light">Ver Soluciones</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="images/transformacion-digital.png" alt="Transformación Digital" class="img-fluid">
+                </div>
             </div>
         </div>
-    </header>
-    <!-- Fin Contenedor Header -->
+    </section>
 
-    <!-- Contenedor Main -->
-    <main>
-        <a id="subir" class="icon-arrow-up scroll" href="#linkHome"></a>
-        <!-- Sección Features -->
-        <section class="boxFeatures" id="linkFeatures">
-            <h3>Features</h3>
-
-            <div class="features">
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
+    <!-- Clients Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-muted">CONFIADO POR LAS EMPRESAS LÍDERES</p>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-6 col-md-2 mb-4 mb-md-0">
+                    <img src="img/client-1.png" alt="Client Logo" class="img-fluid client-logo">
                 </div>
-
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
+                <div class="col-6 col-md-2 mb-4 mb-md-0">
+                    <img src="img/client-2.png" alt="Client Logo" class="img-fluid client-logo">
                 </div>
-
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
+                <div class="col-6 col-md-2 mb-4 mb-md-0">
+                    <img src="img/client-3.png" alt="Client Logo" class="img-fluid client-logo">
                 </div>
-
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
+                <div class="col-6 col-md-2 mb-4 mb-md-0">
+                    <img src="img/client-4.png" alt="Client Logo" class="img-fluid client-logo">
                 </div>
-
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
-                </div>
-
-                <div class="cardFeatures">
-                    <span class="icon-refresh"></span>
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a.</p>
-                    <a href="#">Learn More</a>
+                <div class="col-6 col-md-2">
+                    <img src="img/client-5.png" alt="Client Logo" class="img-fluid client-logo">
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section>
-        <!-- Fin Sección Features -->
-
-        <!-- Sección Call To Actions -->
-        <section class="boxCallToActions">
-            <div class="callToActions">
-                <div class="imgCallToActions">
-                    <img src="images/do_ui_kit_download_cta_floating_devices-2x.png" alt="">
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nuestros Servicios Corporativos</h2>
+                <p class="text-muted w-lg-50 mx-auto">Ofrecemos soluciones integrales para la transformación digital de su empresa</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h4>Migración a la Nube</h4>
+                        <p class="text-muted">Implementación estratégica de soluciones cloud para optimizar costos y mejorar la escalabilidad de su infraestructura.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
                 </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Automatización DevOps</h4>
+                        <p class="text-muted">Flujos de trabajo CI/CD automatizados que aceleran el time-to-market y mejoran la calidad del software.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Seguridad Cloud</h4>
+                        <p class="text-muted">Protección avanzada para sus activos digitales con arquitecturas Zero Trust y cumplimiento normativo.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>Inteligencia Artificial</h4>
+                        <p class="text-muted">Soluciones de IA y Machine Learning para extraer valor de sus datos y automatizar procesos complejos.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Desarrollo Empresarial</h4>
+                        <p class="text-muted">Aplicaciones corporativas a medida que resuelven desafíos específicos de su industria.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Análisis de Datos</h4>
+                        <p class="text-muted">Plataformas de Business Intelligence para transformar datos en insights accionables.</p>
+                        <a href="#" class="text-primary text-decoration-none">Saber más <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <article class="contenido">
-                    <h3>Create interactive <br>prototypes</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam possimus nemo sequi cum? Obcaecati eos possimus ea numquam fugit. Quae et labore accusamus consectetur voluptatum placeat incidunt quaerat quibusdam accusantium.</p>
-
-                    <ul>
-                        <li> <span class="icon-check"></span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </li>
-                        <li> <span class="icon-check"></span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </li>
-                    </ul>
-
-
-                    <div class="boxCardCallToActions" id="cardAnimada">
-                        <div class="cardCallToActions">
-
-                            <div class="boxProfesional">
-                                <div class="imgProfesional">
-                                    <img src="images/person_1.jpg" alt="">
-                                </div>
-                                <div class="datosProfesional">
-                                    <h5>Amalia G.</h5>
-                                    <h6>Co-Founder, XYZ Inc.</h6>
-                                </div>
+    <!-- Solutions Section -->
+    <section class="py-5 bg-light" id="solutions">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <img src="img/solutions-image.png" alt="Soluciones Corporativas" class="img-fluid">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h2 class="mb-4">Soluciones Tecnológicas para la Empresa Moderna</h2>
+                    <p class="text-muted mb-4">En Yacelly Solutions desarrollamos arquitecturas tecnológicas que soportan el crecimiento y la innovación continua.</p>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
                             </div>
-                            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita odit est ullam quis recusandae ab illum sunt ut in excepturi tenetur a, aspernatur iste. Accusamus dolorem delectus tempore debitis quaerat."</p>
+                        </div>
+                        <div>
+                            <h5>Infraestructura Cloud Híbrida</h5>
+                            <p class="text-muted mb-0">Diseñamos e implementamos entornos multi-cloud optimizados para su negocio.</p>
                         </div>
                     </div>
-
-
-                </article>
-
-
-            </div>
-        </section>
-        <!-- Fin Sección Call To Actions -->
-
-        <!-- Sección About -->
-        <section class="boxAbout" id="linkAbout">
-
-            <h3>About Us</h3>
-
-            <div class="about">
-                <div class="imgAbout">
-                    <img src="images/about_1.jpg" alt="">
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Plataformas de Desarrollo Empresarial</h5>
+                            <p class="text-muted mb-0">Entornos estandarizados que aceleran la creación de aplicaciones corporativas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Modernización de Aplicaciones</h5>
+                            <p class="text-muted mb-0">Transformamos sus sistemas legacy en aplicaciones cloud-nativas escalables.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <article class="contenidoAbout">
-                    <h3>Create interactive prototypes</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam possimus nemo sequi cum? Obcaecati eos possimus ea numquam fugit. Quae et labore accusamus consectetur voluptatum placeat incidunt quaerat quibusdam accusantium.</p>
-                    <a class="botonGetStarted" href="#">Learn More</a>
-                </article>
             </div>
+        </div>
+    </section>
 
-
-        </section>
-        <!-- Fin Sección About -->
-
-        <!-- Sección Testimonios -->
-        <section class="boxSlider" id="linkTestimonial">
-            <h3>Testimonials</h3>
-
-            <div id="carouselExampleIndicators" class="carousel slide centerSlider" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                </ol>
-
-                <div class="carousel-inner" id="testimonio"></div>
-
-
+    <!-- Stats Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="stats-container">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-title">Proyectos Entregados</div>
+                    </div>
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-title">Clientes Corporativos</div>
+                    </div>
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-title">SLA Cumplido</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-title">Soporte Global</div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-        </section>
-        <!-- Fin Sección Testimonios -->
-
-        <!-- Sección Contacto -->
-        <section class="boxContacto" id="linkContacto">
-            <h3>Get In Touch</h3>
-
-            <div class="container contacto">
-                <form id="miForm">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputName"><b>First Name</b></label>
-                            <input type="text" class="form-control" id="inputName" placeholder="First Name..." required>
+    <!-- About Section -->
+    <section class="py-5 about-section" id="about">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Yacelly Solutions</h2>
+                <p class="text-muted w-lg-50 mx-auto">Liderando la innovación tecnológica desde 2015</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <h3 class="mb-4">Nuestra Historia</h3>
+                    <p class="text-muted">Fundada en 2015, Yacelly Solutions nació con la visión de transformar la manera en que las empresas adoptan la tecnología. Lo que comenzó como un pequeño equipo de especialistas en cloud computing, hoy es una organización global con presencia en 3 continentes.</p>
+                    <p class="text-muted">Hemos ayudado a más de 50 empresas Fortune 500 en su viaje de transformación digital, implementando soluciones innovadoras que generan valor tangible.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <img src="img/signature.png" alt="Firma CEO" height="60">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputLastName"><b>Last Name</b></label>
-                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name..." required>
+                        <div>
+                            <h5 class="mb-0">José Yacelly</h5>
+                            <p class="text-muted mb-0">CEO & Fundador</p>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="inputEmail"><b>Email</b></label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email..." required>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Nuestra Misión</h3>
+                            <p class="text-muted">Empoderar a las organizaciones mediante soluciones tecnológicas que:</p>
+                            <ul class="text-muted">
+                                <li class="mb-2">Optimizan sus operaciones</li>
+                                <li class="mb-2">Mejoran la experiencia del cliente</li>
+                                <li class="mb-2">Generan nuevas fuentes de ingreso</li>
+                                <li>Futurizan sus modelos de negocio</li>
+                            </ul>
+                            <div class="mt-4">
+                                <a href="#" class="btn btn-primary me-2">Descargar Company Profile</a>
+                                <a href="#" class="btn btn-outline-primary">Ver Casos de Éxito</a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="inputSubject"><b>Subject</b></label>
-                        <input type="text" class="form-control" id="inputSubject" placeholder="Subject..." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message"><b>Mensaje</b></label>
-                        <textarea class="form-control" rows="5" id="message" placeholder="Message..." required></textarea>
-                    </div>
-
-
-                    <button type="submit" class="botonEnviarMensaje">Enviar Mensaje</button>
-                </form>
+                </div>
             </div>
-        </section>
-        <!-- Sección Contacto -->
+        </div>
+    </section>
 
-    </main>
-    <!-- Fin Contenedor Main -->
+    <!-- Testimonials Section -->
+    <section class="py-5" id="clients">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="text-muted w-lg-50 mx-auto">Testimonios de líderes empresariales que han confiado en nuestras soluciones</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"Yacelly Solutions implementó nuestra plataforma cloud en tiempo récord, con un ROI del 300% en el primer año. Su enfoque estratégico fue clave para nuestro crecimiento."</p>
+                        </div>
+                        <div class="d-flex align-items-center mt-4">
+                            <div class="me-3">
+                                <img src="img/testimonial-1.jpg" alt="Cliente" class="rounded-circle" width="60">
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Carlos Mendoza</h5>
+                                <p class="text-muted mb-0">Director de TI, Grupo Financiero</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"La automatización DevOps que implementaron redujo nuestros tiempos de lanzamiento de 3 semanas a 3 días. Un cambio radical en nuestra capacidad de innovación."</p>
+                        </div>
+                        <div class="d-flex align-items-center mt-4">
+                            <div class="me-3">
+                                <img src="img/testimonial-2.jpg" alt="Cliente" class="rounded-circle" width="60">
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Ana Lucía Ramírez</h5>
+                                <p class="text-muted mb-0">VP de Producto, RetailTech</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"Su arquitectura de seguridad cloud nos permitió cumplir con regulaciones internacionales mientras mejorábamos nuestra agilidad operacional. Socios estratégicos excepcionales."</p>
+                        </div>
+                        <div class="d-flex align-items-center mt-4">
+                            <div class="me-3">
+                                <img src="img/testimonial-3.jpg" alt="Cliente" class="rounded-circle" width="60">
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Roberto Sánchez</h5>
+                                <p class="text-muted mb-0">CIO, Healthcare Global</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contenedor Footer -->
+    <!-- Contact Section -->
+    <section class="py-5 contact-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Hablemos de su proyecto</h2>
+                    <p class="mb-5 w-lg-75 mx-auto opacity-75">Nuestro equipo de expertos está listo para asesorarle en la transformación digital de su organización. Complete el formulario y nos pondremos en contacto en menos de 24 horas.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form class="contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nombre Completo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Correo Corporativo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Empresa">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Teléfono">
+                            </div>
+                            <div class="col-12">
+                                <select class="form-control">
+                                    <option selected disabled>¿En qué servicio está interesado?</option>
+                                    <option>Migración a la Nube</option>
+                                    <option>Automatización DevOps</option>
+                                    <option>Seguridad Cloud</option>
+                                    <option>Inteligencia Artificial</option>
+                                    <option>Desarrollo Empresarial</option>
+                                    <option>Análisis de Datos</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Cuéntenos sobre su proyecto" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-secondary btn-lg">Enviar Mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="boxTextFooter">
-            <p>Hecho <span class="icon-heart"></span> <a href="https://github.com/yacel100" target="_blank"> por Jose Yacelly</a></p>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="img/yacelly-logo-white.png" alt="Yacelly Solutions" height="40" class="mb-3">
+                    <p class="opacity-75">Líderes en transformación digital y soluciones cloud para la empresa moderna.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Servicios</h5>
+                        <ul>
+                            <li><a href="#">Cloud Computing</a></li>
+                            <li><a href="#">DevOps</a></li>
+                            <li><a href="#">Seguridad</a></li>
+                            <li><a href="#">Inteligencia Artificial</a></li>
+                            <li><a href="#">Desarrollo</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Soluciones</h5>
+                        <ul>
+                            <li><a href="#">Para Financieras</a></li>
+                            <li><a href="#">Para Retail</a></li>
+                            <li><a href="#">Para Salud</a></li>
+                            <li><a href="#">Para Manufactura</a></li>
+                            <li><a href="#">Para Gobierno</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Compañía</h5>
+                        <ul>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Equipo</a></li>
+                            <li><a href="#">Carreras</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h5>Oficinas</h5>
+                        <ul>
+                            <li class="opacity-75">México DF</li>
+                            <li class="opacity-75">Bogotá</li>
+                            <li class="opacity-75">Miami</li>
+                            <li class="opacity-75">Madrid</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 opacity-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0 opacity-75">© 2023 Yacelly Solutions. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-decoration-none opacity-75 me-3">Términos de Servicio</a>
+                    <a href="#" class="text-decoration-none opacity-75">Política de Privacidad</a>
+                </div>
+            </div>
         </div>
     </footer>
-    <!-- Fin Contenedor Footer -->
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/dataApi.js"></script>
-    <script src="js/app.js"></script>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
